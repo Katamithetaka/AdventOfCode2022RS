@@ -1,7 +1,3 @@
-fn find_largest_number<'a, T: Ord>(array: impl Iterator<Item = &'a T>) -> Option<&'a T> {
-    array.max()
-}
-
 fn main() {
     let input = include_str!("input");
     // Step 1: Get every elf definition
