@@ -3,6 +3,11 @@ fn part_1() {
     let input = include_str!("input");
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
+    // Expects CRLF new lines
+    // convert to LF by replacing \r\n to \n
+    // Each part is separated by a double line break
+    // And each line of each part
+    // HAS to contain a number
     let it = input.split("\r\n\r\n");
 
     // Step 2: get every line of the array as numbers
@@ -24,9 +29,14 @@ fn part_1() {
 
 fn part_2() {
     println!("Part 2!");
-    let input = include_str!("input");
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
+    // Expects CRLF new lines
+    // convert to LF by replacing \r\n to \n
+    // Each part is separated by a double line break
+    // And each line of each part is composed
+    // HAS to contain a number
+    let input = include_str!("input");
     let it = input.split("\r\n\r\n");
 
     // Step 2: get every line of the array as numbers
