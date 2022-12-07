@@ -111,14 +111,14 @@ impl Into<u32> for &Move {
     }
 }
 
-fn part_1() {
+fn part_1(input: &String) -> u64 {
     println!("Part 1!");
 
     // Input format:
     // Each line HAS to contain two letters separated by a space
     // the first letter must be A B or C
     // the second letter must be X Y or Z
-    let input = include_str!("input");
+
     // Step 1: Get each line of the input;
     let moves = input.lines();
 
@@ -134,15 +134,16 @@ fn part_1() {
     let score: u64 = scores.sum();
 
     println!("The total score is: {}", score);
+
+    return score;
 }
 
-fn part_2() {
+fn part_2(input: &String) -> u64 {
     println!("Part 2!");
     // Input format:
     // Each line HAS to contain two letters separated by a space
     // the first letter must be A B or C
     // the second letter must be X Y or Z
-    let input = include_str!("input");
 
     // Step 1: Get each lines of the input;
     let moves = input.lines();
@@ -159,8 +160,31 @@ fn part_2() {
     let score: u64 = scores.sum();
 
     println!("The total score is: {}", score);
+
+    return score;
 }
+
+mod test {
+    #[allow(unused_imports)]
+    use crate::{part_1, part_2};
+
+    #[test]
+    fn part_1_test() {
+        let input = common::get_demo_input().expect("Couldn't read input");
+
+        assert!(part_1(&input) == 15);
+    }
+
+    #[test]
+    fn part_2_test() {
+        let input = common::get_demo_input().expect("Couldn't read input");
+
+        assert!(part_2(&input) == 12);
+    }
+}
+
 fn main() {
-    part_1();
-    part_2();
+    let input = common::get_input().expect("Couldn't read input file");
+    part_1(&input);
+    part_2(&input);
 }

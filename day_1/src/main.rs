@@ -1,6 +1,5 @@
-fn part_1() {
+fn part_1(input: &String) -> u64 {
     println!("Part 1!");
-    let input = include_str!("input");
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
     // Expects CRLF new lines
@@ -21,13 +20,13 @@ fn part_1() {
     let elves = it.map(|calories| calories.sum::<u64>());
 
     // Step 4: Find elf with most calories
-    println!(
-        "The elf with the most calories has: {} calories",
-        elves.max().unwrap_or(0)
-    );
+    let result = elves.max().unwrap_or(0);
+    println!("The elf with the most calories has: {} calories", result);
+
+    return result;
 }
 
-fn part_2() {
+fn part_2(input: &String) -> u64 {
     println!("Part 2!");
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
@@ -36,7 +35,6 @@ fn part_2() {
     // Each part is separated by a double line break
     // And each line of each part is composed
     // HAS to contain a number
-    let input = include_str!("input");
     let it = input.split("\r\n\r\n");
 
     // Step 2: get every line of the array as numbers
@@ -57,8 +55,31 @@ fn part_2() {
     let total_calories: u64 = elves.iter().rev().take(3).sum();
 
     println!("The total amount of callories of the top 3 is {total_calories}");
+
+    return total_calories;
 }
+
+mod test {
+    #[allow(unused_imports)]
+    use crate::{part_1, part_2};
+
+    #[test]
+    fn part_1_test() {
+        let input = common::get_demo_input().expect("Couldn't read input");
+
+        assert!(part_1(&input) == 24000);
+    }
+
+    #[test]
+    fn part_2_test() {
+        let input = common::get_demo_input().expect("Couldn't read input");
+
+        assert!(part_2(&input) == 45000);
+    }
+}
+
 fn main() {
-    part_1();
-    part_2();
+    let input = common::get_input().expect("Couldn't read input file");
+    part_1(&input);
+    part_2(&input);
 }
