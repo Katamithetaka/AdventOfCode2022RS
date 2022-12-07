@@ -1,3 +1,5 @@
+mod test;
+
 fn part_1(input: &String) -> u64 {
     println!("Part 1!");
 
@@ -64,25 +66,6 @@ fn part_2(input: &String) -> u64 {
     println!("The total amount of callories of the top 3 is {total_calories}");
 
     return total_calories;
-}
-
-mod test {
-    #[allow(unused_imports)]
-    use crate::{part_1, part_2};
-
-    #[test]
-    fn part_1_test() {
-        let input = common::get_demo_input().expect("Couldn't read input");
-
-        assert!(part_1(&input) == 24000);
-    }
-
-    #[test]
-    fn part_2_test() {
-        let input = common::get_demo_input().expect("Couldn't read input");
-
-        assert!(part_2(&input) == 45000);
-    }
 }
 
 fn main() {
