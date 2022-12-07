@@ -129,7 +129,7 @@ fn part_2(input: &String) -> String {
         }
     });
 
-    moves.split("\r\n").for_each(|f| {
+    moves.split(new_line).for_each(|f| {
         let actions = f
             .split(" ")
             .filter_map(|m| m.parse::<usize>().ok())
