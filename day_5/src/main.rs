@@ -15,6 +15,7 @@ fn part_1(input: &String) -> String {
     let double_new_line = new_line.to_owned() + new_line;
 
     let (crates, moves) = common::split_at(input, &double_new_line).unwrap();
+
     println!("{}{}", crates, moves);
 
     let last_line = crates.lines().last().unwrap();

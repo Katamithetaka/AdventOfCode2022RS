@@ -1,5 +1,6 @@
 fn part_1(input: &String) -> u64 {
     println!("Part 1!");
+
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
     // Expects CRLF new lines
