@@ -10,7 +10,12 @@ fn part_1(input: &String) -> String {
 
     // Step 1: Get each line of the input;
 
-    let (crates, moves) = common::split_at(input, "\r\n\r\n").unwrap();
+    let new_line = if input.contains("\r\n") { "\r\n" } else { "\n" };
+
+    let double_new_line = new_line.to_owned() + new_line;
+
+    let (crates, moves) = common::split_at(input, &double_new_line).unwrap();
+
     println!("{}{}", crates, moves);
 
     let last_line = crates.lines().last().unwrap();
@@ -27,7 +32,7 @@ fn part_1(input: &String) -> String {
     // Collect crates in VecDequeues
     let mut result = vec![];
     result.resize(*number_elements as usize, VecDeque::new());
-    crates.split("\r\n").for_each(|f| {
+    crates.split(new_line).for_each(|f| {
         let mut i = 0;
         let v = f.chars().collect::<Vec<_>>();
         loop {
@@ -45,7 +50,7 @@ fn part_1(input: &String) -> String {
     });
 
     // Get each action
-    moves.split("\r\n").for_each(|f| {
+    moves.split(new_line).for_each(|f| {
         println!("{}", f);
         let actions = f
             .split(" ")
@@ -86,7 +91,11 @@ fn part_2(input: &String) -> String {
 
     // Step 1: Get each line of the input;
 
-    let (crates, moves) = common::split_at(input, "\r\n\r\n").unwrap();
+    let new_line = if input.contains("\r\n") { "\r\n" } else { "\n" };
+
+    let double_new_line = new_line.to_owned() + new_line;
+
+    let (crates, moves) = common::split_at(input, &double_new_line).unwrap();
 
     //println!("{}\n\n{}", crates, moves);
 
@@ -103,7 +112,7 @@ fn part_2(input: &String) -> String {
 
     let mut result = vec![];
     result.resize(*number_elements as usize, VecDeque::new());
-    crates.split("\r\n").for_each(|f| {
+    crates.split(new_line).for_each(|f| {
         let mut i = 0;
         let v = f.chars().collect::<Vec<_>>();
         loop {

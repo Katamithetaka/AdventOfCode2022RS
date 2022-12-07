@@ -1,6 +1,6 @@
 fn part_1(input: &String) -> u64 {
     println!("Part 1!");
-    println!("{}", input);
+
     // Step 1: Get every elf definition
     // Note: Each elf is separated by two line breaks
     // Expects CRLF new lines
@@ -8,12 +8,15 @@ fn part_1(input: &String) -> u64 {
     // Each part is separated by a double line break
     // And each line of each part
     // HAS to contain a number
-    let it = input.split("\n\n");
+    let new_line = if input.contains("\r\n") { "\r\n" } else { "\n" };
+
+    let double_new_line = new_line.to_owned() + new_line;
+    let it = input.split(&double_new_line);
 
     // Step 2: get every line of the array as numbers
     let it = it.map(|lines| {
         lines
-            .split("\n")
+            .split(new_line)
             .map(|string_num| u64::from_str_radix(string_num, 10).unwrap_or(0))
     });
 
@@ -36,12 +39,15 @@ fn part_2(input: &String) -> u64 {
     // Each part is separated by a double line break
     // And each line of each part is composed
     // HAS to contain a number
-    let it = input.split("\r\n\r\n");
+    let new_line = if input.contains("\r\n") { "\r\n" } else { "\n" };
+
+    let double_new_line = new_line.to_owned() + new_line;
+    let it = input.split(&double_new_line);
 
     // Step 2: get every line of the array as numbers
     let it = it.map(|lines| {
         lines
-            .split("\r\n")
+            .split(new_line)
             .map(|string_num| u64::from_str_radix(string_num, 10).unwrap_or(0))
     });
 
