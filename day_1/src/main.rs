@@ -8,12 +8,12 @@ fn part_1(input: &String) -> u64 {
     // Each part is separated by a double line break
     // And each line of each part
     // HAS to contain a number
-    let it = input.split("\r\n\r\n");
+    let it = input.split("\n\n");
 
     // Step 2: get every line of the array as numbers
     let it = it.map(|lines| {
         lines
-            .split("\r\n")
+            .split("\n")
             .map(|string_num| u64::from_str_radix(string_num, 10).unwrap_or(0))
     });
 
