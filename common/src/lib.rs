@@ -40,6 +40,10 @@ pub fn get_demo_input() -> Option<String> {
     fs::read_to_string("demo_input").ok()
 }
 
+pub fn get_demo_input_at(number: usize) -> Option<String> {
+    fs::read_to_string(format!("demo_input_{}", number)).ok()
+}
+
 pub fn split_at<'a>(str: &'a str, pattern: &str) -> Option<(&'a str, &'a str)> {
     str.split_once(pattern)
 }
