@@ -1,8 +1,6 @@
 mod test;
 mod utils;
-use std::result;
 
-use utils::get_value;
 
 pub fn visible_left(trees: &Vec<char>, index: usize) -> bool {
     for i in 0..index {
