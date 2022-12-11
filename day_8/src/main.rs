@@ -1,7 +1,6 @@
 mod test;
 mod utils;
 
-
 pub fn visible_left(trees: &Vec<char>, index: usize) -> bool {
     for i in 0..index {
         if (trees[i] as i32) >= (trees[index] as i32) {
